@@ -1,0 +1,32 @@
+#version 330 core
+
+// Input vertex data, different for all executions of this shader.
+layout (location = 0) in vec3 position;
+//Input data
+
+uniform float vertexOffset;
+uniform float uScale;
+//uniform int IndexInUse;
+
+void main(){
+
+    //gl_Position.x = vertexPosition_modelspace+vertexOffset;
+    vec3 a;
+	if (position.y == -0.5 && position.x == 0.5){
+		a = vec3(vertexOffset,0.0,0.0);
+		gl_Position = vec4((position + a),1);
+	}
+	
+	else if (position.y == -0.5 && position.x == -0.5){
+		a = vec3(-vertexOffset,0.0,0.0);
+		gl_Position = vec4((position + a),1);
+	}
+    else{
+	gl_Position = vec4((position),1);
+	}
+	
+    
+    
+
+}
+
